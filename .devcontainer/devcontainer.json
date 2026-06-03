@@ -1,0 +1,31 @@
+{
+    "name": "stm32-leds-rotation",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
+    "remoteUser": "badprog",
+    "runArgs": [
+        "--privileged",
+        "-v",
+        "/dev/bus/usb:/dev/bus/usb"
+    ],
+    "postStartCommand": "sudo chmod 666 /dev/bus/usb/001/* 2>/dev/null || true",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-vscode.cmake-tools",
+                "ms-vscode.cpptools",
+                "marus25.cortex-debug"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "cmake.configureOnOpen": false,
+                "workbench.colorCustomizations": {
+                    "statusBar.background": "#0d22db",
+                    "statusBarItem.remoteBackground": "#ce16f3"
+                }
+            }
+        }
+    }
+}
